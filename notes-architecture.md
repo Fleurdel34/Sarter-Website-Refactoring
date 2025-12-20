@@ -28,9 +28,9 @@ La création de fonctions réutilisable pourrait être une option.
 Ce constat est identique dans les composants home et country.
 
 ## données gérées directement dans le composant => notez comme anti-pattern
-L'utilisation d'un fichier json enregistré en dur dans l'application dans les composants Home et Country est une mauvaise pratique. Cela ralenti l'application (fichier volumineux) et peut entraîner une fuite de données.=>anti pattern
+L'utilisation d'un fichier json enregistré en dur dans l'application dans les composants home et country est une mauvaise pratique. Cela ralenti l'application (fichier volumineux) et peut entraîner une fuite de données.=>anti pattern
 
-## fichiers mal placés (ex: service dans components)=>préparation du back end
+## fichiers mal placés (ex: service dans components)
 Aucun dossier et fichier utilisant les services Angular ont été créé afin de réaliser un appel API ou l'appel aux requêtes REST.
 L'appel s'effectue à tort dans les composants home et country. 
 Il convient de créer un dossier et un fichier relatif au service et à l'appel de requête afin d'être utilisable par tous les composants de l'application si besoin.
@@ -41,10 +41,10 @@ Aucune donnée en dur ne doit être présente (dossier Mock avec le fichier au f
 Il n'existe pas de composants et de fichiers comportant les models de données (ex:interface Participation et interface Olympic).
 Il n'existe pas de composant HeaderComponent réutilisable et présent sur toutes les pages.
 Il n'existe pas de composant correspondant à la page DashboardPage et CountryDetailPage.
-Il n'existe pas de composant loadingPage.
+Il n'existe pas de composant LoadingPage.
 Le composant dédié aux services n'est pas mise en place dans l'application.
 
-## logique du code=>
+## logique du code
 Absence de balise h1 pour le titre principal.
 Absence d'attribut Aria relatif à l'accessibilité.
 Le path d'accès à la page détail du pays ne respecte pas la construction demandée. En effet, l'id du pays est un nombre or il a été codé avec le typage string correspondant au nom du pays.
@@ -56,6 +56,8 @@ Les balises html sont directement appelées dans les fichiers scss. Il s'agit d'
 Le routerLink possède une string à vide or il manque le symbole "/".
 
 La création de fonction réutilisable est une solution pour optimiser la logique du code notamment afin de subscribe à un observable ou de construire un graphique.
+
+Dans l'objet de configuration @Component, il manque le tableau des imports afin d'y ajouter les dépendances des composants.
 
 ## vérifier le comportement visuel 
 Le site n'est pas responsive et ne respecte pas les principes de l'accessibilité. Les éléments suivants sont à améliorer : contraste, taille des focus, aria-label sur les boutons et icônes et descriptions textuelles pour les graphiques.
