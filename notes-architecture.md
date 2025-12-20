@@ -67,22 +67,20 @@ Absence de composant loading=> squelette simple ou spinner à mettre en place.
 La fluidité de la navigation est à améliorer avec l'utilisation des design patterns.
 
 Ajouter l'icone médaille dans le focus sur la page d'accueil car il est manquant.
+Ajouter le logo dont l'image est présente dans le dossier assets/images.
 
 Le visuel de la page d'accueil ou dashboard et de la page détail par pays sont à adapter en fonction des spécifications fonctionnelles et de la maquette figma (taille des caractères, affichages des pays, ordre données dans les encadrés et texte à rectifier). 
 
 
-## Schéma de la nouvelle structure front-end:
+## Schéma et explication de la nouvelle structure front-end:
 
+## Schéma
 src/app/
     |── components/ 
     |    ├──header/
     |    |        ├── header.component.ts
     |    |        ├── header.component.html
     |    |        └── header.component.css
-    |    ├──loading/
-    |    |        ├── loading.component.ts
-    |    |        ├── loading.component.html
-    |    |        └── loading.component.css
     ├── pages/
     |    ├──dashboard-page/
     |    |        ├── dashboard-page.component.ts
@@ -91,13 +89,30 @@ src/app/
     |    ├──country-detail-page/
     |    |        ├── country-detail-page.component.ts
     |    |        ├── country-detail-page.component.html
-    |    |        └── country-detail-page.component.css               
-    |    ├──error/ 
-    |    |        ├── error.component.ts
-    |    |        ├── error.component.html
-    |    |        └── error.component.css              
+    |    |        └── country-detail-page.component.css                            
     ├── services/  
     |    ├──data.service.ts
     ├── models/
     |    ├──participation.interface.ts
     |    ├──olympic.interface.ts
+
+## Explication
+
+La structure telle que proposée ci-dessous présente plusieurs avantages:
+
+=> La séparation des composants et des services:
+Les services seront créés à partir du Singleton Pattern car ce dernier permet de gérer la connexion 
+au back end et à la base de données. En séparant les composants et les services et en utilisant le Singleton Pattern, cela économisera les ressources (la classe est instanciée une seule fois pour toute l'application) et diminuera le recours aux variables globales (effets de bord évités).
+
+Les services permettent de:
+    =>centraliser les données,
+    =>améliorer l'organisation le code en évitant de le répéter,
+    =>partager des données à tous les composants dans toute l'application. Ces derniers pourront accèder aux mêmes données,
+    =>intéragir avec les différents composants,
+    =>possèder des données toujours à jour,
+    =>éviter de données accès aux injections de données (anti-patern).
+
+=> création des models:
+Le constructor pattern permet de facilier la création et le formatage des données. Il centralise la création de données permettant des modifications ultérieures à un seul endroit du code.
+
+Cette structure permet de maintenir une organisation compréhensible, plus lisible et plus facile à maintenir.
