@@ -62,10 +62,42 @@ Dans l'objet de configuration @Component, il manque le tableau des imports afin 
 ## vérifier le comportement visuel 
 Le site n'est pas responsive et ne respecte pas les principes de l'accessibilité. Les éléments suivants sont à améliorer : contraste, taille des focus, aria-label sur les boutons et icônes et descriptions textuelles pour les graphiques.
 
-Absence de la page loading=> squelette simple ou spinner à mettre en place.
+Absence de composant loading=> squelette simple ou spinner à mettre en place.
 
 La fluidité de la navigation est à améliorer avec l'utilisation des design patterns.
 
 Ajouter l'icone médaille dans le focus sur la page d'accueil car il est manquant.
 
 Le visuel de la page d'accueil ou dashboard et de la page détail par pays sont à adapter en fonction des spécifications fonctionnelles et de la maquette figma (taille des caractères, affichages des pays, ordre données dans les encadrés et texte à rectifier). 
+
+
+## Schéma de la nouvelle structure front-end:
+
+src/app/
+    |── components/ 
+    |    ├──header/
+    |    |        ├── header.component.ts
+    |    |        ├── header.component.html
+    |    |        └── header.component.css
+    |    ├──loading/
+    |    |        ├── loading.component.ts
+    |    |        ├── loading.component.html
+    |    |        └── loading.component.css
+    ├── pages/
+    |    ├──dashboard-page/
+    |    |        ├── dashboard-page.component.ts
+    |    |        ├── dashboard-page.component.html
+    |    |        └── dashboard-page.component.css               
+    |    ├──country-detail-page/
+    |    |        ├── country-detail-page.component.ts
+    |    |        ├── country-detail-page.component.html
+    |    |        └── country-detail-page.component.css               
+    |    ├──error/ 
+    |    |        ├── error.component.ts
+    |    |        ├── error.component.html
+    |    |        └── error.component.css              
+    ├── services/  
+    |    ├──data.service.ts
+    ├── models/
+    |    ├──participation.interface.ts
+    |    ├──olympic.interface.ts
