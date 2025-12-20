@@ -64,7 +64,7 @@ Dans l'objet de configuration @Component, il manque le tableau des imports afin 
 ## vérifier le comportement visuel 
 Le site n'est pas responsive et ne respecte pas les principes de l'accessibilité. Les éléments suivants sont à améliorer : contraste, taille des focus, aria-label sur les boutons/icônes et descriptions textuelles pour les graphiques.
 
-Absence de composant loading=> squelette simple ou spinner à mettre en place.
+Absence de composant ou d'état loading=> squelette simple ou spinner à mettre en place.
 
 La fluidité de la navigation est à améliorer avec l'utilisation des design patterns et du routing.
 
@@ -91,7 +91,11 @@ src/app/
     |    ├──country-detail-page/
     |    |        ├── country-detail-page.component.ts
     |    |        ├── country-detail-page.component.html
-    |    |        └── country-detail-page.component.css                            
+    |    |        └── country-detail-page.component.css 
+    |    ├──not-found-page/
+    |    |        ├── not-found-page.component.ts
+    |    |        ├── not-found-page.component.html
+    |    |        └── not-found-page.component.css                              
     ├── services/  
     |    ├──data.service.ts
     ├── models/
