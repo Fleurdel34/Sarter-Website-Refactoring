@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
-import { Olympic } from 'src/app/models/olympic';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-medal-chart',
@@ -13,14 +13,15 @@ import { Olympic } from 'src/app/models/olympic';
 export class MedalChartComponent implements  OnInit {
 
   public lineChart!: Chart<"line", string[], number>;
-  public data!:Olympic[];
   @Input() countryName: string| null = null;
 
-  constructor() {}
+  
+  constructor(private dataService:DataService) { }
 
   ngOnInit() {
-    if (this.data && this.data.length > 0) {
-      const selectedCountry = this.data.find(i => i.country === this.countryName);
+    const data = this.dataService.getAllCountries();
+    if (data && data.length > 0) {
+      const selectedCountry = data.find(i => i.country === this.countryName);
       const years = selectedCountry?.participations.map((i) => i.year) ?? [];
       const medals = selectedCountry?.participations.map((i) => i.medalsCount.toString()) ?? [];
       this.buildChart(years, medals);

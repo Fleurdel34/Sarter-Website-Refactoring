@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { Router } from '@angular/router';
-import { Olympic } from 'src/app/models/olympic';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-pie-chart',
@@ -12,15 +12,15 @@ import { Olympic } from 'src/app/models/olympic';
 })
 export class PieChartComponent implements OnInit{
 
-public data!:Olympic[];
 public pieChart!: Chart<"pie", number[], string>;
 
-constructor(private router: Router) {}
+constructor(private router: Router, private dataService:DataService) {}
 
 ngOnInit() { 
-  if (this.data && this.data.length > 0) {
-    const countries: string[] = this.data.map((i) => i.country);
-    const medals = this.data.map((i) => i.participations.map((i) => (i.medalsCount)));
+  const data = this.dataService.getAllCountries();
+  if (data && data.length > 0) {
+    const countries: string[] = data.map((i) => i.country);
+    const medals = data.map((i) => i.participations.map((i) => (i.medalsCount)));
     const sumOfAllMedalsYears = medals.map((i) => i.reduce((acc: number, i: number) => acc + i, 0));
     this.buildPieChart(countries, sumOfAllMedalsYears);
   }

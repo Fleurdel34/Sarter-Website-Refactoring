@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { Olympic } from 'src/app/models/olympic';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { DataService } from 'src/app/services/data.service';
 
 
 @Component({
@@ -14,14 +14,14 @@ export class DashboardPageComponent implements OnInit{
   public totalCountries: number = 0
   public totalJOs: number = 0
   titlePage: string = "Medals per Country";
-  public data!:Olympic[];
 
-  constructor() { }
+  constructor(private dataService:DataService) { }
   
   ngOnInit(){ 
-    if (this.data && this.data.length > 0) {
-      this.totalJOs = Array.from(new Set(this.data.map((i) => i.participations.map((f) => f.year)).flat())).length;
-      const countries: string[] = this.data.map((i) => i.country);
+    const data = this.dataService.getAllCountries();
+    if (data && data.length > 0) {
+      this.totalJOs = Array.from(new Set(data.map((i) => i.participations.map((f) => f.year)).flat())).length;
+      const countries: string[] = data.map((i) => i.country);
       this.totalCountries = countries.length;
     }
   }
