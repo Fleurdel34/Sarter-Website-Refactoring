@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
-import { DataService } from 'src/app/services/data.service';
+
 
 @Component({
   selector: 'app-medal-chart',
@@ -12,32 +12,29 @@ import { DataService } from 'src/app/services/data.service';
 
 export class MedalChartComponent implements  OnInit {
 
-  public lineChart!: Chart<"line", string[], number>;
-  @Input() countryName: string| null = null;
-
   
-  constructor(private dataService:DataService) { }
+  public lineChart!: Chart<"line", string[], number>;
+
+  @Input() years: number[]| null = null;
+  @Input() medals: string[]| null = null;
+  @Input() label:string| null = null;
+  @Input() backgroundColor:string| null = null;
+  
+  constructor() { }
 
   ngOnInit() {
-    const data = this.dataService.getAllCountries();
-    if (data && data.length > 0) {
-      const selectedCountry = data.find(i => i.country === this.countryName);
-      const years = selectedCountry?.participations.map((i) => i.year) ?? [];
-      const medals = selectedCountry?.participations.map((i) => i.medalsCount.toString()) ?? [];
-      this.buildChart(years, medals);
-    } 
-  }
+    this.buildChart(this.years || [], this.medals || [], this.label || '', this.backgroundColor || '');}
 
-  buildChart(years: number[], medals: string[]) {
+  buildChart(years: number[], medals: string[], label:string, backgroundColor:string) {
     const lineChart = new Chart("countryChart", {
       type: 'line',
       data: {
         labels: years,
         datasets: [
           {
-            label: "medals",
+            label: label,
             data: medals,
-            backgroundColor: '#0b868f'
+            backgroundColor: backgroundColor
           },
         ]
       },
