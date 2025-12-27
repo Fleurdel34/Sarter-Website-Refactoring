@@ -14,16 +14,24 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Where to start
 
-As you can see, an architecture has already been defined for the project. It is just a suggestion, you can choose to use your own. The predefined architecture includes (in addition to the default angular architecture) the following:
+As you can see, an architecture has already been defined for the project.The predefined architecture includes the following:
 
-- `components` folder: contains every reusable components
-- `pages` folder: contains components used for routing
-- `core` folder: contains the business logic (`services` and `models` folders)
+- `components` folder: contains every reusable components (header and pie-chart)
+- `pages` folder: contains components used for routing:
+    dashboard, country-detail and not-found
+- `models` folder: contains interfaces used for data (olympic and participation)
+- `service` folder: contains data.service.ts file. 
+    `file` data.service: contains an array included the data of `olympic.json` file.
 
-I suggest you to start by understanding this starter code. Pay an extra attention to the `app-routing.module.ts` and the `olympic.service.ts`.
+You can read ARCHITECTURE.md file to understand the application's structure.
 
-Once mastered, you should continue by creating the typescript interfaces inside the `models` folder. As you can see I already created two files corresponding to the data included inside the `olympic.json`. With your interfaces, improve the code by replacing every `any` by the corresponding interface.
+## features.
 
-You're now ready to implement the requested features.
+### header: 
+    contains a main title
+### dashboard with pie chart: 
+    constains data from all countries
+### detail page with detail card and line chart:
+    contains data from a single country   
 
-Good luck!
+
