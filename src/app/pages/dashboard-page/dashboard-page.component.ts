@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { PieChartComponent } from 'src/app/components/pie-chart/pie-chart.component';
 import { DataService } from 'src/app/services/data.service';
 
 
