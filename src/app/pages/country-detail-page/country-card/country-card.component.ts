@@ -14,14 +14,14 @@ export class CountryCardComponent implements OnInit{
   public totalEntries!: number;
   public totalMedals!: number;
   public totalAthletes!: number;
-  @Input() countryName: string|null = null;
+  @Input() id: string|null = null;
 
   constructor(private dataService:DataService) { }
 
   ngOnInit() {
     const data = this.dataService.getAllCountries();
     if (data && data.length > 0) {
-      const selectedCountry = data.find(i => i.country === this.countryName);
+      const selectedCountry = data.find(i => i.id === parseInt(this.id!));
       this.titlePage = selectedCountry?.country ?? '';
       const participations = selectedCountry?.participations.map((i) => i);
       this.totalEntries = participations?.length ?? 0;

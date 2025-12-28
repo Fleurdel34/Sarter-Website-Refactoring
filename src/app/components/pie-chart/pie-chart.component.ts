@@ -19,18 +19,18 @@ constructor(private router: Router, private dataService:DataService) {}
 ngOnInit() { 
   const data = this.dataService.getAllCountries();
   if (data && data.length > 0) {
-    const countries: string[] = data.map((i) => i.country);
+    const idCountries = data.map(item => ({id: item.id.toString(), country: item.country}));
     const medals = data.map((i) => i.participations.map((i) => (i.medalsCount)));
     const sumOfAllMedalsYears = medals.map((i) => i.reduce((acc: number, i: number) => acc + i, 0));
-    this.buildPieChart(countries, sumOfAllMedalsYears);
+    this.buildPieChart(idCountries, sumOfAllMedalsYears);
   }
 }
 
-  buildPieChart(countries: string[], sumOfAllMedalsYears: number[]) {
+  buildPieChart(countries: {id: string, country: string}[], sumOfAllMedalsYears: number[]) {
   const pieChart = new Chart("DashboardPieChart", {
     type: 'pie',
       data: {
-        labels: countries,
+        labels: countries.map(i => i.country),
         datasets: [{
         label: 'Medals',
         data: sumOfAllMedalsYears,
@@ -45,8 +45,8 @@ ngOnInit() {
               const points = pieChart.getElementsAtEventForMode(e.native, 'point', { intersect: true }, true)
               if (points.length) {
                 const firstPoint = points[0];
-                const countryName = pieChart.data.labels ? pieChart.data.labels[firstPoint.index] : '';
-                this.router.navigate(['country', countryName]);
+                const countryid = countries[firstPoint.index].id;
+                this.router.navigate(['country', countryid]);
               }
             }
           }

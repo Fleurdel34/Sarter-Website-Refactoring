@@ -13,17 +13,17 @@ import { DataService } from 'src/app/services/data.service';
   styleUrl: './country-detail-page.component.scss'
 })
 export class CountryDetailPageComponent{
-    countryName:string| null = null;
+    id:string| null = null;
     years: number[] | null = null;
     medals: string[] | null = null;
 
     constructor(private route: ActivatedRoute, private dataService:DataService) {}
     
     ngOnInit() {
-      this.route.paramMap.subscribe((param: ParamMap) =>this.countryName = param.get('countryName'));
+      this.route.paramMap.subscribe((param: ParamMap) =>this.id = param.get('id'));
       const data = this.dataService.getAllCountries();
         if (data && data.length > 0) {
-          const selectedCountry = data.find(i => i.country === this.countryName);
+          const selectedCountry = data.find(i => i.id === parseInt(this.id!));
           this.years = selectedCountry?.participations.map((i) => i.year) ?? [];
           this.medals = selectedCountry?.participations.map((i) => i.medalsCount.toString()) ?? [];        
         }    

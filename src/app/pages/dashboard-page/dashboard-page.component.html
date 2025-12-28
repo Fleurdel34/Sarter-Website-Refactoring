@@ -1,19 +1,5 @@
 <div>
-    <div>
-        <div class="center">
-            <div>{{ titlePage }}</div>
-        </div>
-        <div class="split">
-            <div>
-                <p>Number of countries</p>
-                <p>{{ totalCountries }}</p>
-            </div>
-            <div>
-                <p>Number of JOs</p>
-                <p>{{ totalJOs }}</p>
-            </div>
-        </div>
-    </div>
+    <app-statistics [titlePage]="'Medals per Country'" [statisticsData]="statisticsData"/>
     <app-pie-chart />
 </div>
 

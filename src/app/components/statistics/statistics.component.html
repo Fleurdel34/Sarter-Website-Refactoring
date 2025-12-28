@@ -1,0 +1,12 @@
+<div>
+    <div class="center">
+        <div>{{ titlePage }}</div>
+    </div>
+
+    <div class="split">
+        <div *ngFor="let i of statisticsData">
+            <p>{{ i.label }}</p>
+            <p>{{ i.value }}</p>
+        </div>
+    </div>    
+</div>
