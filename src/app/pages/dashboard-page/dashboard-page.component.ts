@@ -17,6 +17,7 @@ export class DashboardPageComponent implements OnInit{
   public totalJOs: number = 0
   statisticsData: Statistics[] = [];
   countries:string[] = [];
+  
   constructor(private dataService:DataService) { }
   
   ngOnInit(){ 
@@ -26,8 +27,8 @@ export class DashboardPageComponent implements OnInit{
       const countries: string[] = data.map((i) => i.country);
       this.totalCountries = countries.length;
       this.statisticsData = [
-        { label: 'Number of Countries', value: this.totalCountries },
-        { label: 'Number of JOs', value: this.totalJOs }
+        { label: 'Number of JOs', value: this.totalJOs },
+        { label: 'Number of Countries', value: this.totalCountries }
       ];   
   };
 }
