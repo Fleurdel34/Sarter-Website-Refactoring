@@ -34,6 +34,15 @@ You can read ARCHITECTURE.md file to understand the application's structure.
 ### dashboard with pie chart: 
     constains data from all countries
 ### detail page with line chart:
-    contains data from a single country   
+    contains data from a single country
+
+## screenshot
+
+![dashboard-page desktop](image-1.png)
+![country-detail-page desktop](image-2.png)
+
+![dashboard-page mobile](image-3.png)
+![country-detail-page mobile](image-4.png)
+
 
 
