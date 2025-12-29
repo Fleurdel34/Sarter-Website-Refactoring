@@ -16,10 +16,10 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 As you can see, an architecture has already been defined for the project.The predefined architecture includes the following:
 
-- `components` folder: contains every reusable components (header and pie-chart)
+- `components` folder: contains every reusable components (header, pie-chart and statistics)
 - `pages` folder: contains components used for routing:
-    dashboard, country-detail and not-found
-- `models` folder: contains interfaces used for data (olympic and participation)
+    dashboard, country-detail with child component (medal-chart) and not-found
+- `models` folder: contains interfaces used for data (olympic, participation and statistics)
 - `service` folder: contains data.service.ts file. 
     `file` data.service: contains an array included the data of `olympic.json` file.
 
@@ -29,9 +29,11 @@ You can read ARCHITECTURE.md file to understand the application's structure.
 
 ### header: 
     contains a main title
+### statistics:
+    contains commons indicators at the top of pages 
 ### dashboard with pie chart: 
     constains data from all countries
-### detail page with detail card and line chart:
+### detail page with line chart:
     contains data from a single country   
 
 

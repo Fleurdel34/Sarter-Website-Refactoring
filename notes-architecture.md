@@ -76,7 +76,7 @@ Le visuel de la page d'accueil ou dashboard et de la page détail par pays sont 
 
 ## Schéma et explication de la nouvelle structure front-end:
 
-## Schéma
+## Schéma simple de l'architecture de base
 src/app/
     |── components/ 
     |    ├──header/
