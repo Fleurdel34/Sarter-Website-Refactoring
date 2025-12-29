@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Olympic } from '../models/olympic';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -144,12 +144,29 @@ export class DataService {
       }
     ]
   }
-]
-;
+];
 
-  private http = inject(HttpClient);
+  private route = inject(Router);
 
   getAllCountries():Olympic[] {
     return [...this.olympicArray];
+  }
+
+  getCountryById(id: number): Olympic | undefined {
+  const foundIdCountry = this.olympicArray.find(country => country.id === id);
+  if  (!foundIdCountry) {
+    this.route.navigateByUrl('**');
+    throw new Error('Country not found');
+  }  
+    return foundIdCountry;
+  }
+
+  getCountryByCountry(country: string): Olympic | undefined {
+  const foundCountry = this.olympicArray.find(item => item.country === country);
+  if  (!foundCountry) {
+    this.route.navigateByUrl('**');
+    throw new Error('Country not found');
+  }  
+    return foundCountry;
   }
 }

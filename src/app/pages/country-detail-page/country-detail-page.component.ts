@@ -28,12 +28,19 @@ export class CountryDetailPageComponent{
     
     ngOnInit() {
       this.route.paramMap.subscribe((param: ParamMap) =>this.id = param.get('id'));
+      const countryid = this.route.snapshot.params['id'];
+      const countryidNumber = parseInt(countryid);
+      this.dataService.getCountryById(countryidNumber);
       const data = this.dataService.getAllCountries();
         if (data && data.length > 0) {
           const selectedCountry = data.find(i => i.id === parseInt(this.id!));
           this.years = selectedCountry?.participations.map((i) => i.year) ?? [];
           this.medals = selectedCountry?.participations.map((i) => i.medalsCount.toString()) ?? [];
           this.titlePage = selectedCountry?.country ?? '';
+          const countryData = this.titlePage;
+          if (!countryData) {
+            this.dataService.getCountryByCountry(this.titlePage);
+          }
           const participations = selectedCountry?.participations.map((i) => i);
           this.totalEntries = participations?.length ?? 0;
           const medals = selectedCountry?.participations.map((i) => i.medalsCount.toString()) ?? [];
